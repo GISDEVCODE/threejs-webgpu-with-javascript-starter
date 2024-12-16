@@ -1,6 +1,6 @@
 import * as THREE from "three/webgpu"
 import { OrbitControls  } from "three/addons/Addons.js"
-//https://github.com/GISDEVCODE/threejs-webgpu-with-javascript-starter.git
+
 export default class App {
   static async Create() {
     const app = new App();
@@ -24,7 +24,6 @@ export default class App {
 
     renderer.setClearColor(new THREE.Color("#2c3e50"), 1);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.shadowMap.enabled = true;
 
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1;
