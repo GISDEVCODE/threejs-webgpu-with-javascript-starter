@@ -20,7 +20,7 @@ export default class App {
     this._divContainer = divContainer;
 
     let renderer = new THREE.WebGPURenderer({ antialias: true, forceWebGL: false });
-    await renderer.init();
+    // await renderer.init(); -> three.js 최신버전에서는 직접 호출해서는 안됨(Inspector가 작동 안함)
 
     renderer.setClearColor(new THREE.Color("#2c3e50"), 1);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -61,7 +61,7 @@ export default class App {
   }
 
   _setupControls() {
-    const orbitContrls = new OrbitControls(this._camera, this._divContainer);
+    const orbitContrls = new OrbitControls(this._camera, this._renderer.domElement);
     this._orbitControls = orbitContrls;
   }
 
