@@ -69,12 +69,17 @@ export default class App {
     window.onresize = this.resize.bind(this);
     this.resize();
 
-    this._clock = new THREE.Clock()
+    const timer = new THREE.Timer()
+    timer.connect(document);
+    this._timer = timer;
+
     this._renderer.setAnimationLoop(this.render.bind(this));
   }
 
   update() {
-    const delta = this._clock.getDelta();
+    this._timer.update();
+    const delta = this._timer.getDelta();
+
     this._mesh.rotation.y += delta;
     this._orbitControls.update();
   }
